@@ -2,13 +2,19 @@
 module.exports = {
   content: ["./src/**/*.html"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-mobile': "url('/src/images/bg-header-mobile.svg')",
+        'hero-desktop': "url('/src/images/bg-header-desktop.svg')",
+
+      }
+    },
     screens: {
       sm: '375px',
       md: '480px',
       lg: '768px'
     },
-    color: {
+    colors: {
       desaturatedDarkCyan: 'hsl(180, 29%, 50%)',
       lightGreyishCyanBg: 'hsl(180, 52%, 96%)',
       lightGrayishCyanFilter: 'hsl(180, 31%, 95%)',
@@ -17,6 +23,10 @@ module.exports = {
     },
     fontFamily: {
       sans: ['League Spartan', "sans-serif"]
+    },
+    fontWeight: {
+      thin: '500',
+      bold: '700'
     }
   },
   plugins: [],
