@@ -11,7 +11,11 @@ fetch('./js/data.json')
             // set id for each divs
             createElem.setAttribute('id', `${id}`)
             console.log(createElem)
-            createElem.className = 'bg-white pl-4 flex flex-col md:flex-row md:justify-between md:py-5 md:px-6 md:items-center gap-2 justify-between shadow-xl  container mx-auto border-l-4 rounded-md pb-3 border-l-desaturatedDarkCyan'
+            createElem.className = 'bg-white pl-4 flex flex-col md:flex-row md:justify-between md:py-5 md:px-6 md:items-center gap-2 justify-between shadow-xl  container mx-auto rounded-md pb-3'
+
+            if (featured) {
+                createElem.classList.add('border-l-4', 'border-l-desaturatedDarkCyan')
+            }
             // create inner div
             const innerDiv = document.createElement('div')
             innerDiv.className = 'flex flex-col gap-2 md:mr-7 md:flex-row md:gap-4 md:items-center'
