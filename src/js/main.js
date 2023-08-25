@@ -129,12 +129,13 @@ fetch('./js/data.json')
 
 
             createElem.appendChild(thirdInnerDivElement);
-
+            createElem.classList.add('card')
             mainElement.appendChild(createElem);
         });
         const clickedP = document.querySelectorAll('.clickedP')
         const searchDiv = document.getElementById('search')
-        console.log(clickedP)
+        const clearButton = document.getElementById('clear');
+        const cards = document.querySelectorAll('.card');
         clickedP.forEach(p => {
             p.addEventListener('click', () => {
                 const content = p.textContent
@@ -142,13 +143,48 @@ fetch('./js/data.json')
                 const existingP = searchDiv.querySelector(`p[data-content="${content}"]`)
                 if (!existingP) {
                     const newElement = document.createElement('p');
-                    newElement.className = 'font-bold text-desaturatedDarkCyan bg-lightGreyishCyanBg px-2 pt-2 pb-1 rounded-md cursor-pointer hover:text-white hover:bg-desaturatedDarkCyan'
-                    newElement.textContent = content
+                    newElement.className = 'font-bold text-desaturatedDarkCyan bg-lightGreyishCyanBg px-2 pt-2 pb-1 rounded-l-md cursor-pointer'
+                    const containerElement = document.createElement('div');
+                    containerElement.className = 'flex items-center';
+
+                    const spanElement = document.createElement('span');
+                    spanElement.textContent = 'X';
+                    spanElement.className = 'font-bold text-white ml-0 cursor-pointer rounded-r-lg bg-desaturatedDarkCyan hover:bg-black px-3 pt-2 pb-1';
+                    spanElement.addEventListener('click', () => {
+                        searchDiv.removeChild(containerElement);
+                    });
+                    containerElement.appendChild(newElement);
+                    containerElement.appendChild(spanElement);
+
+                    searchDiv.insertBefore(containerElement, searchDiv.children[1]);
+
+                    newElement.textContent = content;
                     newElement.setAttribute('data-content', content);
-                    searchDiv.insertBefore(newElement, searchDiv.children[1])
+                    filterCards(content);
                 }
             })
+
         })
+        clearButton.addEventListener('click', () => {
+            const addedPTags = searchDiv.querySelectorAll('p[data-content]');
+            addedPTags.forEach(pTag => {
+                searchDiv.removeChild(pTag.parentNode);
+            });
+            filterCards('');
+        });
+        function filterCards(tag) {
+            cards.forEach(card => {
+                const cardTags = card.dataset.tags.split(',');
+
+                if (tag === '' || cardTags.includes(tag)) {
+                    card.classList.remove('hidden');
+                    card.classList.add('flex');
+                } else {
+                    card.classList.remove('flex');
+                    card.classList.add('hidden');
+                }
+            });
+        }
     })
     .catch(error => {
         console.error('Error:', error);
