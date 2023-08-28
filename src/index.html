@@ -18,17 +18,19 @@
   <header class="w-full h-32 bg-desaturatedDarkCyan bg-hero-mobile md:bg-hero-desktop bg-no-repeat bg-cover bg-center">
   </header>
   <!-- Main Section -->
-  <main class="mb-14 flex flex-col gap-8" id="main">
-    <!-- Filter Section -->
-    <div
-      class="bg-white mb-10 -mt-8 items-center px-6 flex py-4 justify-between shadow-xl  container mx-auto rounded-md">
-      <div class="flex gap-2 flex-wrap " id="search">
-      </div>
-      <h1 id="clear" class="text-desaturatedDarkCyan font-bold hover:underline cursor-pointer">Clear</h1>
+  <div id="search"
+    class="bg-white mb-10 -mt-8 items-center px-6 hidden py-4 justify-between shadow-xl  container mx-auto rounded-md">
+    <div class="flex gap-2 flex-wrap" id="tagsDiv">
     </div>
+    <h1 id="clear" class="text-desaturatedDarkCyan font-bold hover:underline cursor-pointer">Clear</h1>
+  </div>
+  <main class="mb-14 mt-14 flex flex-col gap-8" id="main">
+    <!-- Filter Section -->
   </main>
-  <div class="container mx-auto w-full"> Challenge by <a href="https://www.frontendmentor.io?ref=challenge"
-      target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>. </div>
+  <div class="container text-lg flex items-center justify-center my-4 mx-auto w-full"> Challenge by <a
+      class="text-desaturatedDarkCyan" href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend
+      Mentor. </a> Coded by <a href="https://www.frontendmentor.io/profile/MelakuAlehegn" target="_blank"
+      class="text-desaturatedDarkCyan"> Melaku Alehegn.</a></div>
   <script type="module" src="./js/main.js"></script>
 </body>
 
