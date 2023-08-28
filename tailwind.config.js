@@ -12,7 +12,6 @@ module.exports = {
       backgroundImage: {
         'hero-mobile': "url('/src/images/bg-header-mobile.svg')",
         'hero-desktop': "url('/src/images/bg-header-desktop.svg')",
-
       },
       colors: {
         desaturatedDarkCyan: 'hsl(180, 29%, 50%)',
