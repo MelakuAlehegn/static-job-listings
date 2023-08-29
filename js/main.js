@@ -1,9 +1,11 @@
 renderJobs()
+hundleSearch()
 function renderJobs() {
     fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             // sort the object so that featured are on the top
+            // console.log(data)
             data.sort((a, b) => {
                 if (a.featured && !b.featured) {
                     return -1;
@@ -22,7 +24,7 @@ function renderJobs() {
         })
 
 }
-hundleSearch()
+
 function mergeTags(job) {
     const allTagsArr = []
     allTagsArr.push(job.role)
@@ -87,11 +89,12 @@ function hundleSearch() {
     })
     const clearButton = document.getElementById('clear');
     clearButton.addEventListener('click', () => {
-        tagsDiv.classList.remove('flex')
-        tagsDiv.classList.add('hidden')
+        tagsDiv.innerHTML = ""
+        mainElement.innerHTML = ""
         searchDiv.classList.remove('flex')
         searchDiv.classList.add('hidden')
         mainElement.classList.add('mt-14')
+        clickedTags.length = 0
         renderJobs()
     });
 }
