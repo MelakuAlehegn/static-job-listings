@@ -1,9 +1,11 @@
 renderJobs()
+hundleSearch()
 function renderJobs() {
     fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             // sort the object so that featured are on the top
+            // console.log(data)
             data.sort((a, b) => {
                 if (a.featured && !b.featured) {
                     return -1;
@@ -22,7 +24,7 @@ function renderJobs() {
         })
 
 }
-hundleSearch()
+
 function mergeTags(job) {
     const allTagsArr = []
     allTagsArr.push(job.role)
@@ -87,11 +89,12 @@ function hundleSearch() {
     })
     const clearButton = document.getElementById('clear');
     clearButton.addEventListener('click', () => {
-        tagsDiv.classList.remove('flex')
-        tagsDiv.classList.add('hidden')
+        tagsDiv.innerHTML = ""
+        mainElement.innerHTML = ""
         searchDiv.classList.remove('flex')
         searchDiv.classList.add('hidden')
         mainElement.classList.add('mt-14')
+        clickedTags.length = 0
         renderJobs()
     });
 }
@@ -130,9 +133,9 @@ function createJobCard(job) {
     const { id, company, logo, isnew, featured, position, role, level, postedAt, contract, location, languages, tools } = job;
     const createElem = document.createElement('div');
     createElem.setAttribute('id', id);
-    createElem.className = 'bg-white pl-4 flex flex-col md:flex-row md:justify-between md:py-5 md:px-6 md:items-center gap-2 justify-between shadow-xl  container mx-auto rounded-md pb-3';
+    createElem.className = 'bg-white pl-4 flex flex-col md:flex-row md:justify-between md:py-7 md:px-6 md:items-center gap-2 justify-between shadow-xl  container mx-auto rounded-md pb-3';
     if (featured) {
-        createElem.classList.add('border-l-4', 'border-l-desaturatedDarkCyan');
+        createElem.classList.add('border-l-[5px]', 'border-l-desaturatedDarkCyan');
     }
     const innerDiv = document.createElement('div');
     innerDiv.className = 'flex flex-col gap-2 md:mr-7 md:flex-row md:gap-4 md:items-center';
@@ -142,13 +145,13 @@ function createJobCard(job) {
     innerDiv.appendChild(profileImg);
     // create div for left text
     const innerDivContent = document.createElement('div');
-    innerDivContent.className = 'flex flex-col items-start justify-start';
+    innerDivContent.className = 'flex flex-col items-start justify-start gap-2';
     const textTop = document.createElement('div');
     textTop.className = 'flex items-center'
     innerDivContent.appendChild(textTop)
     // company name
     const companyElement = document.createElement('p');
-    companyElement.className = 'text-desaturatedDarkCyan font-bold mr-4 md:text-md';
+    companyElement.className = 'text-desaturatedDarkCyan font-bold mr-4 md:text-lg';
     companyElement.textContent = company;
     const featuredElement = document.createElement('div');
     featuredElement.className = 'flex font-bold text-white items-center';
@@ -167,7 +170,7 @@ function createJobCard(job) {
     }
     // create position element
     const positionElement = document.createElement('p');
-    positionElement.className = 'text-veryDarkGrayishCyan font-bold md:text-xl cursor-pointer hover:text-desaturatedDarkCyan';
+    positionElement.className = 'text-veryDarkGrayishCyan font-bold md:text-2xl cursor-pointer hover:text-desaturatedDarkCyan';
     positionElement.textContent = position;
 
     const locationElement = document.createElement('div');

@@ -1788,6 +1788,30 @@ video {
   border-top-width: 1px;
 }
 
+.border-l-8 {
+  border-left-width: 8px;
+}
+
+.border-l-\[10px\] {
+  border-left-width: 10px;
+}
+
+.border-l-\[8px\] {
+  border-left-width: 8px;
+}
+
+.border-l-\[6px\] {
+  border-left-width: 6px;
+}
+
+.border-l-\[5px\] {
+  border-left-width: 5px;
+}
+
+.border-l-\[4px\] {
+  border-left-width: 4px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -2630,6 +2654,10 @@ video {
     gap: 1rem;
   }
 
+  .md\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .md\:bg-hero-desktop {
     background-image: url('/images/bg-header-desktop.svg');
   }
@@ -2644,9 +2672,24 @@ video {
     padding-bottom: 1.25rem;
   }
 
+  .md\:py-7 {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
