@@ -177,15 +177,15 @@ function createJobCard(job) {
     locationElement.className = 'flex gap-2 items-center';
 
     const postedAtElement = document.createElement('li');
-    postedAtElement.className = 'text-darkGrayishCyan list-none';
+    postedAtElement.className = 'text-darkGrayishCyan md:text-xl list-none';
     postedAtElement.textContent = postedAt;
 
     const contractElement = document.createElement('li');
-    contractElement.className = 'text-darkGrayishCyan';
+    contractElement.className = 'text-darkGrayishCyan md:text-xl';
     contractElement.textContent = contract;
 
     const locationTextElement = document.createElement('li');
-    locationTextElement.className = 'text-darkGrayishCyan';
+    locationTextElement.className = 'text-darkGrayishCyan md:text-xl';
     locationTextElement.textContent = location;
     locationElement.appendChild(postedAtElement);
     locationElement.appendChild(contractElement);
