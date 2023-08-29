@@ -10,8 +10,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'hero-mobile': "url('/bg-images/bg-header-mobile.svg')",
-        'hero-desktop': "url('/bg-images/bg-header-desktop.svg')",
+        'hero-mobile': "url('/src/images/bg-header-mobile.svg')",
+        'hero-desktop': "url('/src/images/bg-header-desktop.svg')",
       },
       colors: {
         desaturatedDarkCyan: 'hsl(180, 29%, 50%)',
