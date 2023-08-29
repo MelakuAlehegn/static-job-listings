@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./**/*.{html,js}"],
   theme: {
     screens: {
       sm: '375px',
@@ -10,8 +10,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'hero-mobile': "url('/src/images/bg-header-mobile.svg')",
-        'hero-desktop': "url('/src/images/bg-header-desktop.svg')",
+        'hero-mobile': "url('/images/bg-header-mobile.svg')",
+        'hero-desktop': "url('/images/bg-header-desktop.svg')",
       },
       colors: {
         desaturatedDarkCyan: 'hsl(180, 29%, 50%)',

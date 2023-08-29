@@ -4,8 +4,8 @@
   "description": "![Design preview for the Job listings with filtering coding challenge](./design/desktop-preview.jpg)",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/input.css -o ./src/css/output.css",
-    "watch": "npx tailwindcss -i ./src/input.css -o ./src/css/output.css --watch"
+    "build": "npx tailwindcss -i ./input.css -o ./css/output.css",
+    "watch": "npx tailwindcss -i ./input.css -o ./css/output.css --watch"
   },
   "keywords": [],
   "author": "",

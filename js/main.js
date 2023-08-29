@@ -1,6 +1,6 @@
 renderJobs()
 function renderJobs() {
-    fetch('./js/data.json')
+    fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             // sort the object so that featured are on the top
@@ -97,7 +97,7 @@ function hundleSearch() {
 }
 
 function filterJobs(clickedtags) {
-    fetch('./js/data.json')
+    fetch('./data.json')
         .then(response => response.json())
         .then(data => {
             data.sort((a, b) => {
