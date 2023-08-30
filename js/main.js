@@ -198,11 +198,11 @@ function createJobCard(job) {
     innerDiv.appendChild(innerDivContent);
     createElem.appendChild(innerDiv);
     const hrElement = document.createElement('hr');
-    hrElement.className = 'h-[1px] bg-darkGrayishCyan border-none w-11/12 md:hidden';
+    hrElement.className = 'h-[1px] bg-darkGrayishCyan my-2 border-none w-5/6 md:hidden';
     createElem.appendChild(hrElement);
 
     const thirdInnerDivElement = document.createElement('div');
-    thirdInnerDivElement.className = 'flex flex-wrap gap-3 pr-8 md:flex-nowrap md:float-right';
+    thirdInnerDivElement.className = 'flex flex-wrap gap-3 pr-8 mb-4 md:flex-nowrap md:float-right';
 
     const roleElement = document.createElement('p');
     roleElement.className = 'font-bold text-desaturatedDarkCyan bg-lightGreyishCyanBg px-2 pt-2 pb-1 rounded-md cursor-pointer hover:text-white hover:bg-desaturatedDarkCyan clickedP';
