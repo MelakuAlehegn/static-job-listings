@@ -140,7 +140,7 @@ function createJobCard(job) {
     const innerDiv = document.createElement('div');
     innerDiv.className = 'flex flex-col gap-2 md:mr-7 md:flex-row md:gap-4 md:items-center';
     const profileImg = document.createElement('img');
-    profileImg.className = 'w-12 -mt-6 md:mt-0 md:w-20';
+    profileImg.className = 'w-12 rounded-full -mt-6 md:mt-0 md:w-20';
     profileImg.src = logo;
     innerDiv.appendChild(profileImg);
     // create div for left text
