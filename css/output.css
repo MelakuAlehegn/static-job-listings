@@ -822,6 +822,10 @@ video {
   height: 1px;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .w-11\/12 {
   width: 91.666667%;
 }
@@ -1772,8 +1776,8 @@ video {
   border-left-width: 1px;
 }
 
-.border-l-4 {
-  border-left-width: 4px;
+.border-l-\[5px\] {
+  border-left-width: 5px;
 }
 
 .border-r {
@@ -1786,30 +1790,6 @@ video {
 
 .border-t {
   border-top-width: 1px;
-}
-
-.border-l-8 {
-  border-left-width: 8px;
-}
-
-.border-l-\[10px\] {
-  border-left-width: 10px;
-}
-
-.border-l-\[8px\] {
-  border-left-width: 8px;
-}
-
-.border-l-\[6px\] {
-  border-left-width: 6px;
-}
-
-.border-l-\[5px\] {
-  border-left-width: 5px;
-}
-
-.border-l-\[4px\] {
-  border-left-width: 4px;
 }
 
 .border-solid {
@@ -2105,11 +2085,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -2659,10 +2634,6 @@ video {
     gap: 1rem;
   }
 
-  .md\:gap-5 {
-    gap: 1.25rem;
-  }
-
   .md\:bg-hero-desktop {
     background-image: url('/images/bg-header-desktop.svg');
   }
@@ -2672,19 +2643,14 @@ video {
     padding-right: 1.5rem;
   }
 
-  .md\:py-5 {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
-
   .md\:py-7 {
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
   }
 
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-lg {
@@ -2692,9 +2658,9 @@ video {
     line-height: 1.75rem;
   }
 
-  .md\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 

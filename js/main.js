@@ -1,8 +1,9 @@
+
 renderJobs()
 hundleSearch()
 function renderJobs() {
-    fetch('./data.json')
-        .then(response => response.json())
+    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+        .then(response => response.data)
         .then(data => {
             // sort the object so that featured are on the top
             // console.log(data)
@@ -22,7 +23,6 @@ function renderJobs() {
                 mainElement.appendChild(createdCard)
             })
         })
-
 }
 
 function mergeTags(job) {
@@ -100,8 +100,8 @@ function hundleSearch() {
 }
 
 function filterJobs(clickedtags) {
-    fetch('./data.json')
-        .then(response => response.json())
+    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+        .then(response => response.data)
         .then(data => {
             data.sort((a, b) => {
                 if (a.featured && !b.featured) {
