@@ -1,8 +1,9 @@
+
 renderJobs()
 hundleSearch()
 function renderJobs() {
-    fetch('./data.json')
-        .then(response => response.json())
+    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+        .then(response => response.data)
         .then(data => {
             // sort the object so that featured are on the top
             // console.log(data)
@@ -22,7 +23,6 @@ function renderJobs() {
                 mainElement.appendChild(createdCard)
             })
         })
-
 }
 
 function mergeTags(job) {
@@ -100,8 +100,8 @@ function hundleSearch() {
 }
 
 function filterJobs(clickedtags) {
-    fetch('./data.json')
-        .then(response => response.json())
+    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+        .then(response => response.data)
         .then(data => {
             data.sort((a, b) => {
                 if (a.featured && !b.featured) {
@@ -140,7 +140,7 @@ function createJobCard(job) {
     const innerDiv = document.createElement('div');
     innerDiv.className = 'flex flex-col gap-2 md:mr-7 md:flex-row md:gap-4 md:items-center';
     const profileImg = document.createElement('img');
-    profileImg.className = 'w-12 -mt-6 md:mt-0 md:w-20';
+    profileImg.className = 'w-12 rounded-full -mt-6 md:mt-0 md:w-20';
     profileImg.src = logo;
     innerDiv.appendChild(profileImg);
     // create div for left text
@@ -177,15 +177,15 @@ function createJobCard(job) {
     locationElement.className = 'flex gap-2 items-center';
 
     const postedAtElement = document.createElement('li');
-    postedAtElement.className = 'text-darkGrayishCyan list-none';
+    postedAtElement.className = 'text-darkGrayishCyan md:text-xl list-none';
     postedAtElement.textContent = postedAt;
 
     const contractElement = document.createElement('li');
-    contractElement.className = 'text-darkGrayishCyan';
+    contractElement.className = 'text-darkGrayishCyan md:text-xl';
     contractElement.textContent = contract;
 
     const locationTextElement = document.createElement('li');
-    locationTextElement.className = 'text-darkGrayishCyan';
+    locationTextElement.className = 'text-darkGrayishCyan md:text-xl';
     locationTextElement.textContent = location;
     locationElement.appendChild(postedAtElement);
     locationElement.appendChild(contractElement);
@@ -198,11 +198,11 @@ function createJobCard(job) {
     innerDiv.appendChild(innerDivContent);
     createElem.appendChild(innerDiv);
     const hrElement = document.createElement('hr');
-    hrElement.className = 'h-[1px] bg-darkGrayishCyan border-none w-11/12 md:hidden';
+    hrElement.className = 'h-[1px] bg-darkGrayishCyan my-2 border-none w-5/6 md:hidden';
     createElem.appendChild(hrElement);
 
     const thirdInnerDivElement = document.createElement('div');
-    thirdInnerDivElement.className = 'flex flex-wrap gap-3 pr-8 md:flex-nowrap md:float-right';
+    thirdInnerDivElement.className = 'flex flex-wrap gap-3 pr-8 mb-4 md:flex-nowrap md:float-right';
 
     const roleElement = document.createElement('p');
     roleElement.className = 'font-bold text-desaturatedDarkCyan bg-lightGreyishCyanBg px-2 pt-2 pb-1 rounded-md cursor-pointer hover:text-white hover:bg-desaturatedDarkCyan clickedP';
