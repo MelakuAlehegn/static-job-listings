@@ -1,30 +1,59 @@
-
+let jobsData = null
 renderJobs()
 hundleSearch()
-function renderJobs() {
-    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
-        .then(response => response.data)
-        .then(data => {
-            // sort the object so that featured are on the top
-            // console.log(data)
-            data.sort((a, b) => {
-                if (a.featured && !b.featured) {
-                    return -1;
-                } else if (!a.featured && b.featured) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            });
-            const mainElement = document.getElementById('main');
-            mainElement.innerHTML = ''
-            data.forEach(job => {
-                const createdCard = createJobCard(job)
-                mainElement.appendChild(createdCard)
-            })
+function getJobs() {
+    return axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+        .then(response => {
+            jobsData = response.data;
+            return jobsData;
         })
+        .catch((error) => {
+            console.error("Error fetching job data:", error);
+        });
 }
-
+function renderJobs() {
+    if (jobsData === null) {
+        getJobs()
+            .then(() => renderJobs());
+        return;
+    }
+    const sortedJobs = sortJobsData(jobsData);
+    const mainElement = document.getElementById('main');
+    mainElement.innerHTML = ''
+    sortedJobs.forEach(job => {
+        const createdCard = createJobCard(job)
+        mainElement.appendChild(createdCard)
+    })
+}
+function sortJobsData(data) {
+    return data.sort((a, b) => {
+        if (a.featured && !b.featured) {
+            return -1;
+        } else if (!a.featured && b.featured) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+}
+function filterJobs(clickedtags) {
+    if (jobsData === null) {
+        getJobs()
+            .then(() => filterJobs(clickedtags));
+        return;
+    }
+    const sortedJobs = sortJobsData(jobsData);
+    const filtered = sortedJobs.filter((job) => {
+        const tags = mergeTags(job)
+        return clickedtags.every((tag) => tags.includes(tag))
+    })
+    const mainElement = document.getElementById('main');
+    mainElement.innerHTML = ""
+    filtered.forEach(job => {
+        const card = createJobCard(job)
+        mainElement.appendChild(card)
+    })
+}
 function mergeTags(job) {
     const allTagsArr = []
     allTagsArr.push(job.role)
@@ -33,17 +62,14 @@ function mergeTags(job) {
     allTagsArr.push(...job.tools)
     return allTagsArr
 }
-
 function hundleSearch() {
     const mainElement = document.getElementById('main');
     const clickedTags = []
     mainElement.addEventListener('click', (event) => {
         if (event.target.matches('#main .clickedP')) {
             const clickedTag = event.target.textContent
-            console.log(clickedTag)
             if (!clickedTags.includes(clickedTag)) {
                 clickedTags.push(clickedTag)
-                console.log(clickedTags)
                 const searchDiv = document.getElementById('search')
                 const tagsDiv = document.getElementById('tagsDiv')
                 searchDiv.classList.remove('hidden')
@@ -75,7 +101,6 @@ function hundleSearch() {
                 clickedTags.splice(index, 1);
             }
             if (clickedTags.length === 0) {
-                console.log(clickedTags.length)
                 const searchDiv = document.getElementById('search')
                 searchDiv.classList.remove('flex');
                 searchDiv.classList.add('hidden')
@@ -97,36 +122,6 @@ function hundleSearch() {
         clickedTags.length = 0
         renderJobs()
     });
-}
-
-function filterJobs(clickedtags) {
-    axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
-        .then(response => response.data)
-        .then(data => {
-            data.sort((a, b) => {
-                if (a.featured && !b.featured) {
-                    return -1;
-                } else if (!a.featured && b.featured) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            });
-            const filtered = data.filter((job) => {
-                const tags = mergeTags(job)
-                return clickedtags.every((tag) => tags.includes(tag))
-            })
-            const mainElement = document.getElementById('main');
-            mainElement.innerHTML = ""
-            filtered.forEach(job => {
-                const card = createJobCard(job)
-                mainElement.appendChild(card)
-            })
-
-        })
-        .catch((error) => {
-            console.error("Error fetching job data:", error);
-        });
 }
 
 function createJobCard(job) {
