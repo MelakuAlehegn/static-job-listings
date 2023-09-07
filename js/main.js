@@ -2,7 +2,7 @@ let jobsData = null
 renderJobs()
 hundleSearch()
 function getJobs() {
-    return axios.get("https://my.api.mockaroo.com/jobs.json?key=9d5ea9f0")
+    return axios.get("http://localhost:8000/api/jobs")
         .then(response => {
             jobsData = response.data;
             return jobsData;
@@ -137,6 +137,7 @@ function createJobCard(job) {
     const profileImg = document.createElement('img');
     profileImg.className = 'w-12 rounded-full -mt-6 md:mt-0 md:w-20';
     profileImg.src = logo;
+    console.log(logo)
     innerDiv.appendChild(profileImg);
     // create div for left text
     const innerDivContent = document.createElement('div');
@@ -173,7 +174,8 @@ function createJobCard(job) {
 
     const postedAtElement = document.createElement('li');
     postedAtElement.className = 'text-darkGrayishCyan md:text-xl list-none';
-    postedAtElement.textContent = postedAt;
+    const modifiedDate = moment(postedAt).fromNow()
+    postedAtElement.textContent = modifiedDate;
 
     const contractElement = document.createElement('li');
     contractElement.className = 'text-darkGrayishCyan md:text-xl';
