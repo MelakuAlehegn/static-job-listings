@@ -17,7 +17,8 @@ function renderJobs() {
             .then(() => renderJobs());
         return;
     }
-    const sortedJobs = sortJobsData(jobsData);
+    const data = jobsData.jobs
+    const sortedJobs = sortJobsData(data);
     const mainElement = document.getElementById('main');
     mainElement.innerHTML = ''
     sortedJobs.forEach(job => {
@@ -137,7 +138,6 @@ function createJobCard(job) {
     const profileImg = document.createElement('img');
     profileImg.className = 'w-12 rounded-full -mt-6 md:mt-0 md:w-20';
     profileImg.src = logo;
-    console.log(logo)
     innerDiv.appendChild(profileImg);
     // create div for left text
     const innerDivContent = document.createElement('div');
